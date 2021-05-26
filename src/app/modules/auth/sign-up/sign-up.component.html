@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="box-login">
+        <div class="content-login">
+            <div class="cont-left col-6">
+                <h2 class="form-title">Cadastro</h2>
+
+                <form [formGroup]="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nome" formControlName="nome" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="E-mail" formControlName="email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="endereco" class="form-control" placeholder="Endereço Completo" formControlName="endereco" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Senha" formControlName="senha" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Repita sua senha" formControlName="senhaConfirmacao" />
+                    </div>
+                    <div class="form-group terms">
+                        <input type="checkbox" class="form-check-input" formControlName="acceptTerms" id="acceptTerms" />
+                        <label for="acceptTerms">
+                            <span><span></span></span>Eu concordo com os <a class="term-service"> Termos de Serviço</a>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" (click)="onSubmit()">Registrar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="cont-rigth col-6">
+                <figure><img src="../../../assets/images/signup-image.jpg" alt="sing up image"></figure>
+                <a routerLink="/auth/login" class="signup-image-link">Ja possuo Cadastro</a>
+            </div>
+        </div>
+    </div>
+</div>

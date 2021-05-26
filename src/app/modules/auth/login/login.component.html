@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="box-signup">
+        <div class="content-signup">
+            <div class="cont-left col-6">
+                <figure><img src="../../../assets/images/signin-image.jpg" alt="sing up image"></figure>
+                <a routerLink="/auth/sign-up" class="signup-image-link">Criar uma conta</a>
+            </div>
+
+            <div class="cont-rigth col-6">
+                <h2 class="form-title">Login</h2>
+                <form [formGroup]="form" class="register-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="E-mail" formControlName="email" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Senha" formControlName="senha" />
+                    </div>
+                    <div class="form-group remember">
+                        <input type="checkbox" id="remember-me" class="agree-term" formControlName="lembrarLogin" />
+                        <label for="remember-me" class="label-agree-term"><span><span></span></span>Lembrar meus dados</label>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" (click)="onSubmit()">Entrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
