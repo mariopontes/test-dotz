@@ -1,0 +1,23 @@
+.content-saldo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 25px;
+
+    span {
+        width: 100%;
+        text-align: center;
+        color: #ff3a3a;
+        font-weight: bold;
+    }
+}
+
+.content-user {
+    display: flex;
+    align-items: center;
+
+    i {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+}

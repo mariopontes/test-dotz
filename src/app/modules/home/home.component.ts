@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Product } from 'src/app/core/models/product';
+import { Order } from 'src/app/core/models/order.model';
+import { Product } from 'src/app/core/models/product.mode';
 import { User } from 'src/app/core/models/user.model';
-import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { OrdertService } from 'src/app/core/services/order.service';
+import { ProductService } from 'src/app/core/services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -16,31 +17,24 @@ export class HomeComponent implements OnInit {
   listProducts = [];
   modalRef: BsModalRef;
 
-  dataUser: User;
   productSelected: Product;
 
   constructor(
-    private http: HttpClient,
     private modalService: BsModalService,
-    private router: Router
+    private authService: AuthService,
+    private productService: ProductService,
+    private orderService: OrdertService
   ) { }
 
   ngOnInit() {
     this.getProducts();
-    this.getUserData();
-  }
-
-  getUserData() {
-    this.dataUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.dataUser);
   }
 
   getProducts() {
-    this.http.get(`${environment.baseApi}/products`).subscribe((e: any) => this.listProducts = e);
+    this.productService.getProducts().subscribe((e: any) => this.listProducts = e);
   }
 
   selectProduct(product: any, template: TemplateRef<any>) {
-    console.log(product);
     this.productSelected = product;
     this.openModal(template);
   }
@@ -53,27 +47,39 @@ export class HomeComponent implements OnInit {
   }
 
   confirmPurchase() {
-    if (this.dataUser.pontos < this.productSelected.price) {
+    if (this.authService.currentUser.pontos < this.productSelected.price) {
       alert('Você não tem saldo suficiente');
       return;
     }
 
     let body = {
-      pontos: (this.dataUser.pontos - this.productSelected.price)
+      pontos: (this.authService.currentUser.pontos - this.productSelected.price)
     }
 
-    this.http.put(`${environment.baseApi}/users/${this.dataUser.id}`, body).subscribe(
+    this.productService.purchaseProduct(this.authService.currentUser.id, body).subscribe(
       (e: User) => {
         localStorage.setItem('currentUser', JSON.stringify(e));
-        this.dataUser = e;
+        this.authService.currentUser = e;
         this.modalService.hide();
-        alert('Resgate realizado com sucesso!!!');
+
+
+        let order: Order = {
+          userId: this.authService.currentUser.id,
+          address: this.authService.currentUser.endereco,
+          product: this.productSelected.title,
+          priceProduct: this.productSelected.price,
+          status: 'emitido',
+        }
+
+        this.orderService.createOrder(order).subscribe(
+          e => alert('Resgate realizado com sucesso!!!'),
+          error => alert('Não foi possivel realizar seu pedido, tente novamente mais tarde')
+        )
       }
     )
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/auth/login'])
+    this.authService.logout();
   }
 }

@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="cont-home">
+        <h1>Pedidos</h1>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Data</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Pontos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of orderList">
+                    <th scope="row">{{order.createdAt | date:'dd/MM/YYYY - HH:ss'}}</th>
+                    <th scope="row">{{order.address}}</th>
+                    <th scope="row">{{order.status}}</th>
+                    <th scope="row">{{order.product}}</th>
+                    <th scope="row">{{order.priceProduct}}</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
