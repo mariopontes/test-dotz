@@ -55,22 +55,24 @@ export class LoginComponent implements OnInit {
       return
     }
 
-    let currentUser: any = this.listUsers.find(e => (e.email).toLowerCase() === (this.form.get('email').value).toLowerCase());
+    let user: any = this.listUsers.find(e => (e.email).toLowerCase() === (this.form.get('email').value).toLowerCase());
 
-    if (!currentUser) {
+    if (!user) {
       alert('E-mail não cadastrado em nossa banco de dados');
       return;
 
-    } else if (currentUser.password === this.form.get('senha').value) {
+    } else if (user.password === this.form.get('senha').value) {
+
+      this.authService.currentUser = user;
+      localStorage.setItem('currentUser', JSON.stringify(user));
 
       if (this.form.get('lembrarLogin').value) {
         let dadosSalvos = {
           email: this.form.get('email').value,
           senha: this.form.get('senha').value
         }
-
         localStorage.setItem('lembrarLogin', JSON.stringify(dadosSalvos));
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
       } else {
         localStorage.removeItem('lembrarLogin');
       }

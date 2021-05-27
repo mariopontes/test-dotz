@@ -4,3 +4,13 @@
     margin-top: 50px;
     border-radius: 7px;
 }
+
+.table {
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        text-align: center;
+    }
+}

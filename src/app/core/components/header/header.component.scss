@@ -1,14 +1,20 @@
 .content-saldo {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     margin-right: 25px;
+    border-right: 1px solid #9c9c9c;
+    padding-right: 25px;
 
     span {
-        width: 100%;
         text-align: center;
-        color: #ff3a3a;
         font-weight: bold;
+        margin-right: 10px;
+        border: 2px solid red;
+        border-radius: 30px;
+        padding: 2px;
+        color: red;
+        font-size: 14px;
     }
 }
 
@@ -18,6 +24,15 @@
 
     i {
         margin: 0 10px;
+        cursor: pointer;
+        font-size: 14px;
+        color: red;
+    }
+}
+
+.logo {
+    img {
+        width: 100px;
         cursor: pointer;
     }
 }
