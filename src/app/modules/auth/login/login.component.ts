@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
       return
     }
 
-    let user: any = this.listUsers.find(e => (e.email).toLowerCase() === (this.form.get('email').value).toLowerCase());
+    let user: any = this.listUsers.find(res => (res.email).toLowerCase() === (this.form.get('email').value).toLowerCase());
 
     if (!user) {
       alert('E-mail não cadastrado em nosso banco de dados');

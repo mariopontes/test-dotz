@@ -54,7 +54,7 @@ export class SignUpComponent implements OnInit {
       return;
     }
 
-    if (this.listUsers.some(e => (e.email).toLowerCase() == (this.form.get('email').value).toLowerCase())) {
+    if (this.listUsers.some(res => (res.email).toLowerCase() == (this.form.get('email').value).toLowerCase())) {
       alert('E-mail já cadastrado');
       return;
     }
@@ -69,7 +69,7 @@ export class SignUpComponent implements OnInit {
     }
 
     this.authService.postUser(body).subscribe(
-      e => {
+      res => {
         alert('Usuário cadastrado com sucesso');
         this.router.navigate(['/auth/login']);
       }

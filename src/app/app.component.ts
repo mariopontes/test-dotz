@@ -16,7 +16,7 @@ export class AppComponent {
     private router: Router,
     private authService: AuthService
   ) {
-    this.router.events.subscribe(e => {
+    this.router.events.subscribe(res => {
       (location.pathname === '/auth/login' || location.pathname === '/auth/sign-up') ? this.isLogin = true : this.isLogin = false;
       location.pathname === '/order' ? this.fixHeight = 'fix-height' : this.fixHeight = ' ';
     });

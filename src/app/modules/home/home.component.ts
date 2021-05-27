@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
         }
 
         this.orderService.createOrder(order).subscribe(
-          e => alert('Resgate realizado com sucesso!!!'),
+          res => alert('Resgate realizado com sucesso!!!'),
           error => alert('Não foi possivel realizar seu pedido, tente novamente mais tarde')
         )
       }
