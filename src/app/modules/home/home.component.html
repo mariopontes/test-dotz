@@ -1,6 +1,6 @@
 <div class="container">
     <div class="cont-home">
-        <h1>Home</h1>
+        <h1>Produtos</h1>
 
         <div class="d-flex flex-wrap content-products">
             <div *ngFor="let product of listProducts" class="card" style="width: 18rem;">
@@ -34,6 +34,7 @@
             <div class="listProducts">Nome do produto: <span>{{productSelected.title}}</span></div>
             <div class="listProducts">Qtd de pontos: <span>{{productSelected.price}}</span> </div>
         </div>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="confirmPurchase()">Resgatar</button>

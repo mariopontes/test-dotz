@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Order } from 'src/app/core/models/order.model';
 import { Product } from 'src/app/core/models/product.mode';
@@ -16,7 +17,6 @@ export class HomeComponent implements OnInit {
 
   listProducts = [];
   modalRef: BsModalRef;
-
   productSelected: Product;
 
   constructor(

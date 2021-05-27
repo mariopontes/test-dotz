@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -16,8 +17,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    SharedModule
   ]
 })
 export class AuthModule { }
