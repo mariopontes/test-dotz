@@ -34,8 +34,6 @@ export class SignUpComponent implements OnInit {
     })
   }
 
-  get f() { return this.form.controls; }
-
   getUsers() {
     this.authService.getUsers().subscribe((e: []) => this.listUsers = e);
   }
@@ -66,6 +64,8 @@ export class SignUpComponent implements OnInit {
       name: this.form.get('nome').value,
       email: this.form.get('email').value,
       password: this.form.get('senha').value,
+      endereco: this.form.get('endereco').value,
+      pontos: 200
     }
 
     this.authService.postUser(body).subscribe(

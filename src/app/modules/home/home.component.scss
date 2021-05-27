@@ -1,0 +1,63 @@
+.content-saldo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 25px;
+
+    span {
+        width: 100%;
+        text-align: center;
+        color: #ff3a3a;
+        font-weight: bold;
+    }
+}
+
+.content-user {
+    display: flex;
+    align-items: center;
+
+    i {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+}
+
+.cont-home {
+    background: #f8f9fa;
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 7px;
+
+    .content-products {
+        margin-top: 50px;
+        justify-content: space-between;
+
+        .card {
+            margin-bottom: 35px;
+
+            .card-title {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+.modal-body {
+    .content-products {
+        margin-top: 30px;
+        background: #18bb9d;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: white;
+
+        .listProducts {
+            display: flex;
+            justify-content: space-between;
+
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+}

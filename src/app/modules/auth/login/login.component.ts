@@ -62,7 +62,19 @@ export class LoginComponent implements OnInit {
       return;
 
     } else if (currentUser.password === this.form.get('senha').value) {
-      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+      if (this.form.get('lembrarLogin').value) {
+        let dadosSalvos = {
+          email: this.form.get('email').value,
+          senha: this.form.get('senha').value
+        }
+
+        localStorage.setItem('lembrarLogin', JSON.stringify(dadosSalvos));
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      } else {
+        localStorage.removeItem('lembrarLogin');
+      }
+
       this.router.navigate(['/home']);
 
     } else {

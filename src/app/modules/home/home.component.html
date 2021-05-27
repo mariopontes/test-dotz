@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="container">
+        <a class="navbar-brand">Dotz</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/extrato">Extrato</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="d-flex">
+            <div class="content-saldo">
+                <div>Pontos</div>
+                <span>{{dataUser.pontos}}</span>
+            </div>
+
+            <div class="content-user">
+                <!-- <i class="fas fa-user"></i> -->
+                <div>Olá, {{dataUser.name}}</div>
+                <i class="fas fa-power-off" (click)="logout()"></i>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+<div class="container">
+    <div class="cont-home">
+        <h1>Home</h1>
+
+        <div class="d-flex flex-wrap content-products">
+            <div *ngFor="let product of listProducts" class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.title}} <span>{{product.price}}</span></h5>
+                    <p class="card-text">{{product.description}}</p>
+                    <a class="btn btn-success" (click)="selectProduct(product, template)">Resgatar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Confirmação do Pedido</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div>Por favor, confira os valores de seu pedido. Uma vez finalizado, o pedido não poderá ser cancelado</div>
+
+        <div class="content-products">
+            <div class="listProducts">Nome do produto: <span>{{productSelected.title}}</span></div>
+            <div class="listProducts">Qtd de pontos: <span>{{productSelected.price}}</span> </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="confirmPurchase()">Resgatar</button>
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Cancelar</button>
+    </div>
+</ng-template>

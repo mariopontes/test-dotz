@@ -16,4 +16,5 @@ export class AuthService {
   postUser(body: {}) {
     return this.http.post(`${environment.baseApi}/users`, body);
   }
+
 }
