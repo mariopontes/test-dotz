@@ -11,12 +11,37 @@
         .card {
             margin-bottom: 35px;
 
-            .card-title {
-                display: flex;
-                justify-content: space-between;
+            img {
+                padding: 15px;
+            }
 
-                span {
-                    font-size: 12px;
+            .card-body {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-end;
+
+                .card-title {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    span {
+                        font-size: 12px;
+                    }
+                }
+
+                .card-description {
+                    width: 100%;
+                    display: -webkit-box;
+                    overflow: hidden;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    word-break: break-word;
+                    color: rgb(102, 102, 102);
+                    font-size: 14px;
+                    text-transform: lowercase;
+                    line-height: 18px;
+                    min-height: 36px;
                 }
             }
         }
@@ -26,10 +51,9 @@
 .modal-body {
     .content-products {
         margin-top: 30px;
-        background: #18bb9d;
+        background: #f2f2f2;
         padding: 5px 10px;
         border-radius: 10px;
-        color: white;
 
         .listProducts {
             display: flex;

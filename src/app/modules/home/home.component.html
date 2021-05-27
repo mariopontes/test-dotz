@@ -4,11 +4,15 @@
 
         <div class="d-flex flex-wrap content-products">
             <div *ngFor="let product of listProducts" class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="product.img">
                 <div class="card-body">
-                    <h5 class="card-title">{{product.title}} <div>{{product.price}} <span>pontos</span></div>
-                    </h5>
-                    <p class="card-text">{{product.description}}</p>
-                    <a class="btn btn-success" (click)="selectProduct(product, template)">Resgatar</a>
+                    <h5 class="card-title">{{product.title}} </h5>
+                    <p class="card-description">{{product.description}}</p>
+
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <div>{{product.price}} <span class="f-12">pontos</span></div>
+                        <a class="btn btn-success" (click)="selectProduct(product, template)">Resgatar</a>
+                    </div>
                 </div>
             </div>
         </div>
