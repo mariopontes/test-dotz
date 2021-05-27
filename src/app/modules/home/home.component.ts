@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   listProducts = [];
   modalRef: BsModalRef;
   productSelected: Product;
+  address = new FormControl('');
+  modalState = 1;
 
   constructor(
     private modalService: BsModalService,
@@ -40,13 +42,25 @@ export class HomeComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
+    this.address.setValue(this.authService.currentUser.endereco);
+
     this.modalRef = this.modalService.show(template, {
       backdrop: true,
       ignoreBackdropClick: true
     });
   }
 
+  closeModal() {
+    this.modalService.hide();
+    setTimeout(() => this.modalState = 1, 200);
+  }
+
   confirmPurchase() {
+    if (this.modalState === 1) {
+      this.modalState = 2;
+      return;
+    }
+
     if (this.authService.currentUser.pontos < this.productSelected.price) {
       alert('Você não tem saldo suficiente');
       return;
@@ -59,13 +73,13 @@ export class HomeComponent implements OnInit {
     this.productService.purchaseProduct(this.authService.currentUser.id, body).subscribe(
       (e: User) => {
         localStorage.setItem('currentUser', JSON.stringify(e));
+        this.modalState = 1;
         this.authService.currentUser = e;
         this.modalService.hide();
 
-
         let order: Order = {
           userId: this.authService.currentUser.id,
-          address: this.authService.currentUser.endereco,
+          address: this.address.value,
           product: this.productSelected.title,
           priceProduct: this.productSelected.price,
           status: 'emitido',

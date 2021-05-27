@@ -23,21 +23,30 @@
 <ng-template #template>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Confirmação do Pedido</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal()">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="modal-body">
+
+    <div *ngIf="modalState === 1" class="modal-body">
+        <div>Por favor, confira o endereço cadastrado. Uma vez finalizado, não podera ser alterado</div>
+
+        <div class="content-products">
+            <div class="listAddress">Endereço: <input type="text" class="form-control" [formControl]="address"></div>
+        </div>
+    </div>
+
+    <div *ngIf="modalState === 2" class="modal-body">
         <div>Por favor, confira os valores de seu pedido. Uma vez finalizado, o pedido não poderá ser cancelado</div>
 
         <div class="content-products">
             <div class="listProducts">Nome do produto: <span>{{productSelected.title}}</span></div>
             <div class="listProducts">Qtd de pontos: <span>{{productSelected.price}}</span> </div>
         </div>
-
     </div>
+
     <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="confirmPurchase()">Resgatar</button>
-        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmPurchase()">{{modalState === 1 ? 'Avançar' : 'Resgatar'}}</button>
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
     </div>
 </ng-template>

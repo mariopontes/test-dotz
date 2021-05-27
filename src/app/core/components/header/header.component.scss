@@ -27,6 +27,10 @@
         cursor: pointer;
         font-size: 14px;
         color: red;
+
+        &:first-child {
+            color: #001f53;
+        }
     }
 }
 
