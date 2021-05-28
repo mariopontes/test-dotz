@@ -39,6 +39,11 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.form.get('email').invalid) {
+      alert('Insira um e-mail válido');
+      return;
+    }
+
     if (this.form.invalid) {
       alert('Todos os campos são Obrigatórios');
       return;
