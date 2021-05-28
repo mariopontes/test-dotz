@@ -40,3 +40,25 @@
         }
     }
 }
+
+@media (max-width: 767px) {
+    .content-signup {
+        flex-wrap: wrap;
+
+        .cont-left {
+            order: 1;
+        }
+
+        .cont-left,
+        .cont-rigth {
+            width: 100%;
+            max-width: 100%;
+            flex: 100%;
+
+            figure {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}
